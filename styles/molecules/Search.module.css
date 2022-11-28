@@ -1,0 +1,23 @@
+.search { 
+    width: 100%;
+}
+
+.search input[type ='text'] {
+    padding: 15px;
+    width: 100%;
+    background-color: rgb(13 15 18);
+    font-size: 1rem;
+    color: #818c94;
+    border: 1px solid #818c94;
+    border-radius: 0.75rem;
+}
+.search input[type ='text']:focus {
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .search {
+      width: max-content;
+    }
+}
+

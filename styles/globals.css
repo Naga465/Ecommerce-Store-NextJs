@@ -1,0 +1,34 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width:600px){
+  html ,
+  body{ 
+    font-size: 12px
+  };
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: normal;
+  }
+  body {
+    color: #ffffff;
+    /* background: #ffffff; */
+    background: rgb(13 15 18);
+  }
+}
