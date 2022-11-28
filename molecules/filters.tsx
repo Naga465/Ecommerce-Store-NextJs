@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import { formatCurrency, getPrice } from "../services/product";
 import styles from "../styles/molecules/Filters.module.css";
 import { Category, CategoryKey, Filter, FilterInfo } from "../types";
+import SearchInput from "./search";
 
 interface Props {
   filters: null | Filter;
@@ -10,6 +11,7 @@ interface Props {
   onClearFilter?: (filter: any, categoryKey: CategoryKey) => void;
   onRest?: () => void;
   categories: Category;
+  onSearch: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 const CategoryTitle: FC<{
@@ -33,6 +35,7 @@ const CategoryTitle: FC<{
 
 const Filters: FC<Props> = ({ categories, filters, ...props }) => {
   const [filterCatgegories, setFilterCatgegories] = useState<CategoryKey[]>([]);
+  const [showFilter, setShowFilter] = useState<boolean>(false);
   const onHandleChange =
     ({ filter, categoryKey }: any) =>
     (e: React.FormEvent<HTMLInputElement>) => {
@@ -50,7 +53,9 @@ const Filters: FC<Props> = ({ categories, filters, ...props }) => {
     setFilterCatgegories((prev) => [...prev, key]);
   };
 
-  return (
+  const toggleFilter = () => setShowFilter((prev) => !prev);
+
+  const filterContainer = (
     <div className={styles.container}>
       <h2>Filter By</h2>
       <div className={styles.list}>
@@ -110,6 +115,17 @@ const Filters: FC<Props> = ({ categories, filters, ...props }) => {
         })}
       </div>
     </div>
+  );
+
+  return (
+    <>
+      <div className={styles.filters_mobile}>
+        <SearchInput onChange={props.onSearch} />
+        <img onClick={toggleFilter} src={"/filter.png"} />
+        {showFilter && <div className={styles.overlay}>{filterContainer}</div>}
+      </div>
+      <div className={styles.filters}>{filterContainer}</div>
+    </>
   );
 };
 

@@ -1,3 +1,9 @@
+.filters {
+  display: block;
+}
+.filters_mobile {
+  display: none;
+}
 .container {
   min-height: max-content;
   min-width: 300px;
@@ -48,8 +54,28 @@
   display: none;
 }
 
-@media (max-width:600px){
-  .container {
-    display: none;
+@media (max-width: 600px) {
+  .filters {
+    display: none;   
+  }
+  .filters_mobile {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 25px;
+  }
+  .filters_mobile img {
+    height: 24px;
+    width: 24px;
+  }
+  .filters_mobile .overlay {
+    position: absolute;
+    top: 50px;
+    z-index: 999;
+    background-color: black;
+    right: 0;
   }
 }

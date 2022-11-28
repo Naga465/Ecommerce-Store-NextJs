@@ -61,6 +61,7 @@ const Home: NextPage<Props> = (props) => {
     <Layout onSearch={onSearch} title="Products">
       <div className={styles.portal}>
         <Filters
+          onSearch={onSearch}
           categories={{
             ...initialiseWithFilterData(props.products, categories),
             ...dynamicCategoryList,
